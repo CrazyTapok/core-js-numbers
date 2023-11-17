@@ -294,8 +294,8 @@ function getFibonacciNumber(index) {
  */
 function getSumToN(n) {
   let sum = 0;
-  for (let index = 0; index <= n; index += 1) {
-    sum += index;
+  for (let i = 0; i <= n; i += 1) {
+    sum += i;
   }
   return sum;
 }
@@ -312,11 +312,10 @@ function getSumToN(n) {
  *   5   => 5  // 5
  */
 function getSumOfDigits(num) {
-  let arr = [];
   let sum = 0;
-  arr = num.toString().split('');
-  for (let index = 0; index < arr.length; index += 1) {
-    sum += Number(arr[index]);
+  const arr = num.toString().split('');
+  for (let i = 0; i < arr.length; i += 1) {
+    sum += Number(arr[i]);
   }
   return sum;
 }
@@ -613,7 +612,20 @@ function getMaxNumber(firstNumber, secondNumber) {
  * -1, 1 => -1 | 0 | 1
  */
 function getRandomInteger(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+  const array = [];
+  let length;
+  if (min > 0 && max > 0) {
+    length = max - min;
+  } else if (min < 0 && max < 0) {
+    length = Math.abs(min) - Math.abs(max);
+  } else {
+    length = Math.abs(min) + Math.abs(max);
+  }
+  for (let i = 0; i < length + 1; i += 1) {
+    array.push(min + i);
+  }
+  const index = Math.random() * length;
+  return array[Math.floor(index)];
 }
 
 /**
@@ -645,8 +657,8 @@ function getHypotenuse(a, b) {
  */
 function getCountOfOddNumbers(number) {
   let sum = 0;
-  for (let index = 0; index < Math.abs(number); index += 1) {
-    if (index % 2 === 0) {
+  for (let i = 0; i < Math.abs(number); i += 1) {
+    if (i % 2 === 0) {
       sum += 1;
     }
   }
